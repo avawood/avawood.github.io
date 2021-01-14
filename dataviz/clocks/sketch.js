@@ -52,6 +52,7 @@ function draw() {
     if (minute() != lastMinute){
       console.log(minute());
       lastMinute = minute();
+      drawMinute(minute()-1);
       if (lastMinute == 0){
         strokeWeight(1);
         fill(bgColor);
@@ -61,26 +62,24 @@ function draw() {
   //Clear seconds section after a minute completes
     if (second() != lastSecond){
       lastSecond = second();
+      drawSecond(second()-1);
       if (lastSecond == 0){
         strokeWeight(0);
         fill(bgColor);
         rect(width*0.7, 0, width/3, height);
       }
     }
-  //Clear hour section after a minute completes
+  //Clear hour section after a at midnight / noon
     if (hour() != lastHour){
-      lastHour = hour()%12;
+      drawHour((hour()-1)%12);
+      lastHour = (hour() -1)%12;
       if (lastHour == 0){
         strokeWeight(0);
         fill(bgColor);
         rect(0, 0, width/3, height);
       }
     }
-  
-//   Do drawing
-    drawHour(hour()%12);
-    drawMinute(minute());
-    drawSecond(second());
+    
 }
 
 // Reference: https://p5js.org/examples/form-regular-polygon.html
