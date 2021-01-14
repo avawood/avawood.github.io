@@ -6,7 +6,7 @@ function setup() {
 	createCanvas(800,600); // make an HTML canvas element width x height pixels
   	background(bgColor);
   strokeWeight(0);
-  for (let i = 0; i < hour(); i++) {
+  for (let i = 0; i < hour()%12; i++) {
     drawHour(i);
   }
   for (let i = 0; i < minute(); i++) {
@@ -28,7 +28,7 @@ function drawHour(value)
 
 function drawMinute(value)
 {
-    let hourColor = map(hour()+1, 0, 11, 0,255);
+    let hourColor = map(hour()%12+1, 0, 11, 0,255);
     let grad = map(value, 0, 59, 0.1,1);
     fill(grad*hourColor, grad*255, grad*(255-hourColor))
     let y = map(value, 0, 59, height * 1/10, height*8/10);
@@ -40,7 +40,7 @@ function drawMinute(value)
 
 function drawSecond(value)
 {
-    let hourColor = map(hour()+1, 0, 11, 0,255);
+    let hourColor = map(hour()%12+1, 0, 11, 0,255);
     let grad = map(minute(), 0, 59, 0.1,1);
     fill(grad*hourColor, grad*255, grad*(255-hourColor))
     let y = map(value, 0, 59, height * 1/10, height*8/10);
@@ -69,7 +69,7 @@ function draw() {
     }
   //Clear hour section after a minute completes
     if (hour() != lastHour){
-      lastHour = hour();
+      lastHour = hour()%12;
       if (lastHour == 0){
         strokeWeight(0);
         fill(bgColor);
@@ -78,7 +78,7 @@ function draw() {
     }
   
 //   Do drawing
-    drawHour(hour());
+    drawHour(hour()%12);
     drawMinute(minute());
     drawSecond(second());
 }
