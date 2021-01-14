@@ -28,12 +28,14 @@ function drawHour(value)
 
 function drawMinute(value)
 {
-    let hourColor = map(hour(), 0, 11, 0,255);
+    let hourColor = map(hour()+1, 0, 11, 0,255);
     let grad = map(value, 0, 59, 0.1,1);
     fill(grad*hourColor, grad*255, grad*(255-hourColor))
     let y = map(value, 0, 59, height * 2/10, height*8/10);
     let x = map(value%4, 0, 3, width*0.35, width*0.6);
-    polygon(x, y, height*7/120, 4);
+    let quadSize = 40;
+    let tilt = quadSize * 0.57;
+    quad(x,y,x+quadSize,y,x+ tilt+quadSize, y+quadSize, x + tilt,y+quadSize);
 }
 
 function drawSecond(value)
