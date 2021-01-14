@@ -21,7 +21,7 @@ function drawHour(value)
 {
     let color = map(value, 0, 11, 0,255);
     fill(color, 255, 255-color)
-    let y = map(value, 0, 11, height * 2/10, height*8/10);
+    let y = map(value, 0, 11, height * 1/10, height*7/10);
     let x = map(value%2, 0, 1, 115, 172);
     polygon(x, y, height*7/120, 6);
 }
@@ -31,7 +31,7 @@ function drawMinute(value)
     let hourColor = map(hour()+1, 0, 11, 0,255);
     let grad = map(value, 0, 59, 0.1,1);
     fill(grad*hourColor, grad*255, grad*(255-hourColor))
-    let y = map(value, 0, 59, height * 2/10, height*8/10);
+    let y = map(value, 0, 59, height * 1/10, height*8/10);
     let x = map(value%4, 0, 3, width*0.35, width*0.6);
     let quadSize = 40;
     let tilt = quadSize * 0.57;
@@ -40,10 +40,10 @@ function drawMinute(value)
 
 function drawSecond(value)
 {
-    let hourColor = map(hour(), 0, 11, 0,255);
-    let grad = map(minute()+1, 0, 59, 0,1);
+    let hourColor = map(hour()+1, 0, 11, 0,255);
+    let grad = map(minute(), 0, 59, 0.1,1);
     fill(grad*hourColor, grad*255, grad*(255-hourColor))
-    let y = map(value, 0, 59, height * 2/10, height*8/10);
+    let y = map(value, 0, 59, height * 1/10, height*8/10);
     let x = map(value%6, 0, 5, width*0.75, width*0.9);
     polygon(x, y, 15, 3);
 }
