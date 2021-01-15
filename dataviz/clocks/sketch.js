@@ -54,9 +54,8 @@ function draw() {
       lastMinute = minute();
       drawMinute(minute()-1);
       if (lastMinute == 0){
-        strokeWeight(1);
         fill(bgColor);
-        rect(width *0.27, 0, width*0.4, height);
+        rect(width *0.27, 0, width*0.44, height);
       }
     }
   //Clear seconds section after a minute completes
@@ -64,7 +63,6 @@ function draw() {
       lastSecond = second();
       drawSecond(second()-1);
       if (lastSecond == 0){
-        strokeWeight(0);
         fill(bgColor);
         rect(width*0.7, 0, width/3, height);
       }
@@ -74,7 +72,6 @@ function draw() {
       drawHour((hour()-1)%12);
       lastHour = (hour() -1)%12;
       if (lastHour == 0){
-        strokeWeight(0);
         fill(bgColor);
         rect(0, 0, width/3, height);
       }
