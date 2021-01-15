@@ -15,6 +15,9 @@ function setup() {
   for (let i = 0; i < second(); i++) {
     drawSecond(i);
   }
+  lastMinute = minute();
+  lastHour = hour();
+  lastSecond= second();
 }
 
 function drawHour(value)
